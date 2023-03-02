@@ -1,0 +1,16 @@
+name: "Auto assign reviewers to PR"
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign-pr-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Auto assign reviewers to PR"
+        uses: chenggoi/assign-pr-reviewers@release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          users: "chenggoi" # comma-separated (example: "a, b, c, d")
+          ignore-drafts: true # defaults to false if not provided 
